@@ -1,15 +1,18 @@
 import React, {Component} from 'react';
 import {
-  Text,
   View,
   StyleSheet,
   ListView,
 } from 'react-native';
 
+import TaskRow from './task_row.js';
+
 const styles = StyleSheet.create({
   container: {
     paddingTop: 40,
-    paddingLeft: 30,
+    backgroundColor: '#F7F7F7',
+    flex: 1,
+    justifyContent: 'flex-start',
   },
 });
 
@@ -17,7 +20,6 @@ class TaskList extends Component {
   constructor(props, context) {
     super(props, context);
 
-    //this stuff
     const ds = new ListView.DataSource({
       rowHasChanged: (r1, r2) => r1 !== r2,
     });
@@ -29,12 +31,14 @@ class TaskList extends Component {
   }
 
   renderRow(todo) {
+    console.log(todo);
     return (
-      <Text>{todo.task}</Text>
+      <TaskRow todo={todo} />
     );
   }
 
   render() {
+    console.log(this.state.dataSource);
     return (
       <View style={styles.container}>
         <ListView

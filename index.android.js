@@ -15,7 +15,7 @@ export default class PluralTodo extends Component {
     this.state = {
       todos: [
         {
-          task: 'Learn React Native',
+          task: 'Learn React Native ...',
         },
         {
           task: 'Learn Reduxxx',
