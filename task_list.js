@@ -46,6 +46,12 @@ class TaskList extends Component {
 
   }
 
+  componentWillReceiveProps(nextProps) {
+    const dataSource = this.state.dataSource.cloneWithRows(nextProps.todos);
+
+    this.setState({ dataSource });
+  }
+
   renderRow(todo) {
     return (
       <TaskRow todo={todo} />
