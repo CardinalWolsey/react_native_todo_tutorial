@@ -9,6 +9,7 @@ import {
 
 import TaskList from './task_list.js';
 import Drawer from './drawer.js';
+import TaskForm from './task_form.js';
 
 export default class PluralTodo extends Component {
   constructor(props, context) {
@@ -39,10 +40,7 @@ export default class PluralTodo extends Component {
     switch (route.name) {
       case 'taskform':
         return (
-          <Text
-            style={{paddingTop: 20,}}
-            >
-            Add form comes here!</Text>
+          <TaskForm />
           );
       default:
         return (
@@ -64,7 +62,7 @@ export default class PluralTodo extends Component {
     return (
       <Navigator
         configureScene={this.configureScene}
-        initialRoute={{ name: 'tasklist', index: 0}}
+        initialRoute={{ name: 'taskform', index: 0}}
         ref={((nav) => {
           this.nav = nav;
         })}
