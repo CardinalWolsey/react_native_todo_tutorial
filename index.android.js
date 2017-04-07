@@ -29,7 +29,9 @@ export default class PluralTodo extends Component {
   }
 
   onAddStarted() {
-    console.log('on add started');
+    this.nav.push({
+      name: 'taskform'
+    });
   }
 
   renderScene(route, nav) {
@@ -37,7 +39,10 @@ export default class PluralTodo extends Component {
     switch (route.name) {
       case 'taskform':
         return (
-          <Text>Add form comes here!</Text>
+          <Text
+            style={{paddingTop: 20,}}
+            >
+            Add form comes here!</Text>
           );
       default:
         return (
@@ -51,10 +56,18 @@ export default class PluralTodo extends Component {
     }
   }
 
+  configureScene() {
+    return Navigator.SceneConfigs.FloatFromBottom;
+  }
+
   render() {
     return (
       <Navigator
+        configureScene={this.configureScene}
         initialRoute={{ name: 'tasklist', index: 0}}
+        ref={((nav) => {
+          this.nav = nav;
+        })}
         renderScene={this.renderScene.bind(this)}
         >
 
