@@ -5,20 +5,37 @@ import {
   TouchableHighlight,
 } from 'react-native';
 
+var Swipeout = require('react-native-swipeout')
+
 export default function render(styles) {
 
-  return (
-    <View style={styles.container}>
-      <Text style={styles.label}>ios: {this.props.todo.task}</Text>
+  const buttons = [
+    {
+      text: 'Done',
+      backgroundColor: '#05A5D1',
+      underlayColor: '#273539',
+      onPress: this.onDonePressed.bind(this),
+    },
+  ];
 
-      <TouchableHighlight
-        onPress={this.onDonePressed.bind(this)}
-        style={styles.doneButton}
-        >
-        <Text>
-          Done
-        </Text>
-      </TouchableHighlight>
-    </View>
+  // <Swipeout
+  //   backgroundColor='#fff'
+  //   right={buttons}
+  //   >
+
+  return (
+
+      <View style={styles.container}>
+        <Text style={styles.label}>ios: {this.props.todo.task}</Text>
+
+        <TouchableHighlight
+          onPress={this.onDonePressed.bind(this)}
+          style={styles.doneButton}
+          >
+          <Text>
+            Done
+          </Text>
+        </TouchableHighlight>
+      </View>
   );
 }
