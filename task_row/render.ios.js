@@ -2,12 +2,23 @@ import React, {Component} from 'react';
 import {
   View,
   Text,
-  TouchableHighlight,
+  StyleSheet,
 } from 'react-native';
 
-var Swipeout = require('react-native-swipeout')
+import Swipeout from 'react-native-swipeout';
 
-export default function render(styles) {
+const localStyle = StyleSheet.create({
+  row: {
+    marginBottom: 0,
+    marginLeft: 0,
+    marginRight: 0,
+  },
+  container: {
+    marginBottom: 20,
+  },
+});
+
+export default function render(baseStyles) {
 
   const buttons = [
     {
@@ -18,24 +29,18 @@ export default function render(styles) {
     },
   ];
 
-  // <Swipeout
-  //   backgroundColor='#fff'
-  //   right={buttons}
-  //   >
-
   return (
-
-      <View style={styles.container}>
-        <Text style={styles.label}>ios: {this.props.todo.task}</Text>
-
-        <TouchableHighlight
-          onPress={this.onDonePressed.bind(this)}
-          style={styles.doneButton}
-          >
-          <Text>
-            Done
-          </Text>
-        </TouchableHighlight>
-      </View>
+    <View
+      style={localStyle.container}
+      >
+      <Swipeout
+        backgroundColor='#fff'
+        right={buttons}
+        >
+        <View style={[baseStyles.container, localStyle.row]}>
+          <Text style={baseStyles.label}> {this.props.todo.task}</Text>
+        </View>
+      </Swipeout>
+    </View>
   );
 }
