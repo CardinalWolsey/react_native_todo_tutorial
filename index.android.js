@@ -1,3 +1,6 @@
+//I now see the wisdom of creating a pluralTodo component that both the index.android and index.ios files draw from
+//TODO: update to use redux
+
 import React, { Component } from 'react';
 import {
   AppRegistry,

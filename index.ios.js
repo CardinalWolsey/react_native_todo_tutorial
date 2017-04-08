@@ -9,23 +9,16 @@ import {
 import TaskList from './task_list.js';
 import Drawer from './drawer.js';
 import TaskForm from './task_form.js';
+import store from './todo_store';
 
 export default class PluralTodo extends Component {
   constructor(props, context) {
     super(props, context);
-    this.state = {
-      todos: [
-        {
-          task: 'Learn React Native ...',
-        },
-        {
-          task: 'Learn Reduxxx',
-        },
-        {
-          task: 'Figure out what is going on here ... check!',
-        },
-      ],
-    };
+    this.state = store.getState();
+
+    store.subscribe(() => {
+      this.setState(store.getState());
+    });
   }
 
   onAddStarted() {
@@ -39,8 +32,12 @@ export default class PluralTodo extends Component {
   }
 
   onAdd(task) {
-    this.state.todos.push({task: task,});
-    this.setState({todos: this.state.todos});
+    // this.state.todos.push({task: task,});
+    // this.setState({todos: this.state.todos});
+    store.dispatch({
+      type: 'ADD_TODO',
+      task,
+    });
     this.nav.pop();
   }
 
