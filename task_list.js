@@ -7,7 +7,7 @@ import {
   Text,
 } from 'react-native';
 
-import TaskRow from './task_row.js';
+import TaskRow from './task_row/component';
 
 const styles = StyleSheet.create({
   container: {
