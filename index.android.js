@@ -44,6 +44,13 @@ export default class PluralTodo extends Component {
     this.nav.pop();
   }
 
+  onDone(todo) {
+    const filteredTodos = this.state.todos.filter((filterTodo) => {
+      return filterTodo !== todo;
+    });
+    this.setState({ todos: filteredTodos });
+  }
+
   renderScene(route, nav) {
     //redo this to not use a switch statement
     switch (route.name) {
@@ -59,6 +66,7 @@ export default class PluralTodo extends Component {
           <TaskList
             onAddStarted={this.onAddStarted.bind(this)}
             todos={this.state.todos}
+            onDone={this.onDone.bind(this)}
             >
 
           </TaskList>
