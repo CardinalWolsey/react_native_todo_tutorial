@@ -65,6 +65,7 @@ export default class PluralTodo extends Component {
       default:
         return (
           <TaskList
+            filter={this.state.filter}
             onAddStarted={this.onAddStarted.bind(this)}
             todos={this.state.todos}
             onDone={this.onDone.bind(this)}
