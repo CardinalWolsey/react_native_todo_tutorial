@@ -15,6 +15,10 @@ function todoStore(state = defaultState, action) {
         task: action.task,
       }]),
     });
+  } else if(action.type === 'DONE_TODO') {
+    return Object.assign({}, state, {
+      todos: state.todos.filter(todo => todo !== action.todo),
+    });
   } else {
     return state;
   }

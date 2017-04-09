@@ -42,10 +42,14 @@ export default class PluralTodo extends Component {
   }
 
   onDone(todo) {
-    const filteredTodos = this.state.todos.filter((filterTodo) => {
-      return filterTodo !== todo;
+    // const filteredTodos = this.state.todos.filter((filterTodo) => {
+    //   return filterTodo !== todo;
+    // });
+    // this.setState({ todos: filteredTodos });
+    store.dispatch({
+      type: 'DONE_TODO',
+      todo,
     });
-    this.setState({ todos: filteredTodos });
   }
 
   renderScene(route, nav) {
