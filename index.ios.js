@@ -52,6 +52,13 @@ export default class PluralTodo extends Component {
     });
   }
 
+  //consider having constants for 'TOGGLE_STATE' and 'DONE_TODO', etc. for the sake of consistency.
+  onToggle() {
+    store.dispatch({
+      type: 'TOGGLE_STATE',
+    });
+  }
+
   renderScene(route, nav) {
     //redo this to not use a switch statement
     switch (route.name) {
@@ -67,6 +74,7 @@ export default class PluralTodo extends Component {
           <TaskList
             filter={this.state.filter}
             onAddStarted={this.onAddStarted.bind(this)}
+            onToggle={this.onToggle.bind(this)}
             todos={this.state.todos}
             onDone={this.onDone.bind(this)}
             >
